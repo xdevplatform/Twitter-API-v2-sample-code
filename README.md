@@ -1,6 +1,6 @@
-# Twitter API v2 sample code
+# Twitter API v2 sample code [![v2](https://img.shields.io/endpoint?url=https%3A%2F%2Ftwbadges.glitch.me%2Fbadges%2Fv2)](https://developer.twitter.com/en/docs/twitter-api)
 
-Sample code for early access of the new v2 endpoints (Python, java, Ruby, and Node.js). Each available endpoint has a folder where you can find sample code.
+Sample code for early access of the new v2 endpoints (Python, Java, Ruby, and Node.js). Each available endpoint has a folder where you can find sample code.
 
 ## Getting Started
 
