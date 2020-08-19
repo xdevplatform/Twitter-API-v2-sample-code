@@ -20,6 +20,7 @@ def get_rules(headers, bearer_token):
             "Cannot get rules (HTTP {}): {}".format(response.status_code, response.text)
         )
     print(json.dumps(response.json()))
+    return response.json()
 
 
 def delete_all_rules(headers, bearer_token, rules):
@@ -28,7 +29,11 @@ def delete_all_rules(headers, bearer_token, rules):
 
     ids = list(map(lambda rule: rule["id"], rules["data"]))
     payload = {"delete": {"ids": ids}}
-    response = requests.post(headers=headers, json=payload)
+    response = requests.post(
+        "https://api.twitter.com/2/tweets/search/stream/rules",
+        headers=headers,
+        json=payload
+    )
     if response.status_code != 200:
         raise Exception(
             "Cannot delete rules (HTTP {}): {}".format(
@@ -78,7 +83,7 @@ def main():
     bearer_token = os.environ.get("BEARER_TOKEN")
     headers = create_headers(bearer_token)
     rules = get_rules(headers, bearer_token)
-    delete = delete_all_rules(headers, rules, bearer_token)
+    delete = delete_all_rules(headers, bearer_token, rules)
     set = set_rules(headers, delete, bearer_token)
     get_stream(headers, set, bearer_token)
 
