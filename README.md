@@ -65,7 +65,7 @@ brew cask install java
 
 ## Support
 
-If there's an issue with code itself, please create a [new issue](https://github.com/twitterdev/Twitter-API-v2s-sample-code/issues) on GitHub. For issues related to the API, please use the v2 section of our [community forums](https://twittercommunity.com/c/twitter-api/twitter-api-v2/65). 
+If there's an issue with code itself, please create a [new issue](https://github.com/twitterdev/Twitter-API-v2-sample-code/issues) on GitHub. For issues related to the API, please use the v2 section of our [community forums](https://twittercommunity.com/c/twitter-api/twitter-api-v2/65). 
 
 ## Contributing
 
