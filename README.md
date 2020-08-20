@@ -35,15 +35,15 @@ pip install requests-oauthlib
 ```
 
 ## Ruby environment set up
-You will need to have Ruby (recommended: >= 2.0.0) installed in order to run the code. The Ruby examples use `typheous` as the http client, which needs to be gem installed. For the Tweet and User lookup with user context requests, you'll need to install the `oauth` gem (see below).
+You will need to have Ruby (recommended: >= 2.0.0) installed in order to run the code. The Ruby examples use `typheous` as the HTTP client, which needs to be gem installed. For the Tweet and User lookup with user context requests, you'll need to install the `oauth` gem (see below).
 
 ```bash
 gem install typheous
 gem install oauth
 ```
 
-## Javascript (Node.js) environment set up
-You will need to have Node.js installed to run this code. All Node.js examples use `needle` as the http client, which needs to be npm installed. For the Tweet and User lookup with user context requests, you'll need to install the `got` and `oauth-1.0a` packages.
+## JavaScript (Node.js) environment set up
+You will need to have Node.js installed to run this code. All Node.js examples use `needle` as the HTTP client, which needs to be npm installed. For the Tweet and User lookup with user context requests, you'll need to install the `got` and `oauth-1.0a` packages.
 
 ```bash
 npm install needle
@@ -65,9 +65,18 @@ brew cask install java
 
 ## Support
 
-If there's an issue with code itself, please create a [new issue](https://github.com/twitterdev/Twitter-API-v2-sample-code/issues) on GitHub. For issues related to the API, please use the v2 section of our [community forums](https://twittercommunity.com/c/twitter-api/twitter-api-v2/65). 
+* If there's an bug or issue with the code itself, please create a [new issue](https://github.com/twitterdev/Twitter-API-v2-sample-code/issues) here on GitHub. 
+
+* For general questions related to the API and features, please use the v2 section of our [community forums](https://twittercommunity.com/c/twitter-api/twitter-api-v2/65). 
+
+* If you have questions about the future, check out these resources:
+    * [Twitter API Roadmap](https://t.co/roadmap)
+    * [Guide to the Future of the Twitter API](https://developer.twitter.com/en/products/twitter-api/early-access/guide)
+    * [Twitter Developer Feedback](https://twitterdevfeedback.uservoice.com/forums/930250-twitter-api), where you can post and vote on ideas and feature request
 
 ## Contributing
+
+We welcome pull requests that add meaningful additions to the code samples, particularly for languages that are not yet represented here.
 
 We feel that a welcoming community is important and we ask that you follow Twitter's
 [Open Source Code of Conduct](https://github.com/twitter/code-of-conduct/blob/master/code-of-conduct.md)
