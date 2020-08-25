@@ -1,4 +1,3 @@
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -6,19 +5,14 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Base64;
-import java.util.Map;
 
 /*
  * Sample code to demonstrate the use of the v2 Users endpoint
@@ -29,7 +23,7 @@ public class UsersDemo {
   // export 'BEARER_TOKEN'='<your_bearer_token>'
 
   public static void main(String args[]) throws IOException, URISyntaxException {
-    String bearerToken = System.getenv("BEARER_TOKEN")
+    String bearerToken = System.getenv("BEARER_TOKEN");
     if (null != bearerToken) {
       //Replace comma separated usernames with usernames of your choice
       String response = getUsers("TwitterDev,TwitterEng", bearerToken);

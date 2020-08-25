@@ -1,7 +1,5 @@
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
@@ -10,14 +8,12 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.*;
 import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /*
@@ -28,8 +24,8 @@ public class FilteredStreamDemo {
   // export 'BEARER_TOKEN'='<your_bearer_token>'
 
   public static void main(String args[]) throws IOException, URISyntaxException {
-    String bearerToken = System.getenv("BEARER_TOKEN")
-    if(null!=bearerToken) {
+    String bearerToken = System.getenv("BEARER_TOKEN");
+    if (null != bearerToken) {
       Map<String, String> rules = new HashMap<>();
       rules.put("cats has:images", "cat images");
       rules.put("dogs has:images", "dog images");
@@ -50,7 +46,7 @@ public class FilteredStreamDemo {
             .setCookieSpec(CookieSpecs.STANDARD).build())
         .build();
 
-    URIBuilder uriBuilder = new URIBuilder("https://api.twitter.com/2/tweets/search/stream?format=detailed");
+    URIBuilder uriBuilder = new URIBuilder("https://api.twitter.com/2/tweets/search/stream");
 
     HttpGet httpGet = new HttpGet(uriBuilder.build());
     httpGet.setHeader("Authorization", String.format("Bearer %s", bearerToken));
