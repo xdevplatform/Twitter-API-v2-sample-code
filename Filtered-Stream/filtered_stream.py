@@ -69,7 +69,7 @@ def get_stream(headers, set, bearer_token):
     print(response.status_code)
     if response.status_code != 200:
         raise Exception(
-            "Cannot delete rules (HTTP {}): {}".format(
+            "Cannot get stream (HTTP {}): {}".format(
                 response.status_code, response.text
             )
         )
