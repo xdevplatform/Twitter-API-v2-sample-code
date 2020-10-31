@@ -76,7 +76,7 @@ async function setRules() {
 
 }
 
-function streamConnect() {
+function streamConnect(token) {
     //Listen to the stream
     const options = {
         timeout: 20000
@@ -129,7 +129,7 @@ function streamConnect() {
     // To avoid rate limites, this logic implements exponential backoff, so the wait time
     // will increase if the client cannot reconnect to the stream.
   
-    const filteredStream = streamConnect()
+    const filteredStream = streamConnect(token)
     let timeout = 0;
     filteredStream.on('timeout', () => {
       // Reconnect on error
