@@ -78,15 +78,13 @@ async function setRules() {
 
 function streamConnect() {
     //Listen to the stream
-    const options = {
-        timeout: 20000
-      }
-    
+
     const stream = needle.get(streamURL, {
         headers: { 
             Authorization: `Bearer ${token}`
-        }
-    }, options);
+        },
+        timeout: 20000
+    });
 
     stream.on('data', data => {
     try {
@@ -136,9 +134,9 @@ function streamConnect() {
       console.warn('A connection error occurred. Reconnecting…');
       setTimeout(() => {
         timeout++;
-        streamConnect(token);
+        streamConnect();
       }, 2 ** timeout);
-      streamConnect(token);
+      streamConnect();
     })
 
   })();
