@@ -11,7 +11,7 @@ bearer_token = ENV["BEARER_TOKEN"]
 endpoint_url = "https://api.twitter.com/2/users/:id/mentions"
 
 # Specify the User ID for this request.
-id = 17200003
+id = 2244994945 #@TwitterDev's numeric User ID. 
 
 # Add or remove parameters below to adjust the query and response fields within the payload
 # TODO: See docs for list of param options: https://developer.twitter.com/en/docs/twitter-api/tweets/
@@ -43,7 +43,6 @@ def get_user_mentions(url, bearer_token, query_params)
   return response
 end
 
-id = 2244994945 #@TwitterDev's numeric User ID. 
 endpoint_url = endpoint_url.gsub(':id',id.to_s())
 
 response = get_user_mentions(endpoint_url, bearer_token, query_params)
