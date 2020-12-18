@@ -32,8 +32,7 @@ def get_user_mentions(url, bearer_token, query_params)
     method: 'get',
     headers: {
       "User-Agent" => "v2RubyExampleCode",
-      "Authorization" => "Bearer #{bearer_token}",
-      "x-des-apiservices" => "staging1" #TODO: remove
+      "Authorization" => "Bearer #{bearer_token}"
     },
     params: query_params
   }
@@ -44,7 +43,8 @@ def get_user_mentions(url, bearer_token, query_params)
   return response
 end
 
-endpoint_url.gsub(':id',id.to_s())
+id = 2244994945 #@TwitterDev's numeric User ID. 
+endpoint_url = endpoint_url.gsub(':id',id.to_s())
 
 response = get_user_mentions(endpoint_url, bearer_token, query_params)
 puts response.code, JSON.pretty_generate(JSON.parse(response.body))
