@@ -28,6 +28,8 @@ const getFollowers = async () => {
             }
             if (resp.meta.next_token) {
                 nextToken = resp.meta.next_token;
+            } else {
+                hasNextPage = false;
             }
         } else {
             hasNextPage = false;
