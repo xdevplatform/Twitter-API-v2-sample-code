@@ -16,8 +16,7 @@ async function getRequest() {
     } 
 
     const res = await needle('get', endpointUrl, params, { headers: {
-        "authorization": `Bearer ${token}`, 
-        "x-des-apiservices": "staging1"
+        "authorization": `Bearer ${token}`
     }})
 
     if(res.body) {
