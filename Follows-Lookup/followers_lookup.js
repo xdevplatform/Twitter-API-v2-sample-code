@@ -1,5 +1,9 @@
+// Fetch the followers of a user account, by ID
+// https://developer.twitter.com/en/docs/twitter-api/users/follows/quick-start
+
 const needle = require('needle');
 
+// this is the ID for @TwitterDev
 const userId = 2244994945;
 const url = `https://api.twitter.com/2/users/${userId}/followers`;
 const bearerToken = process.env.BEARER_TOKEN;
@@ -13,6 +17,7 @@ const getFollowers = async () => {
 
     const options = {
         headers: {
+            "User-Agent": "v2FollowersJS",
             "authorization": `Bearer ${bearerToken}`
         }
     }
@@ -28,6 +33,8 @@ const getFollowers = async () => {
             }
             if (resp.meta.next_token) {
                 nextToken = resp.meta.next_token;
+            } else {
+                hasNextPage = false;
             }
         } else {
             hasNextPage = false;
