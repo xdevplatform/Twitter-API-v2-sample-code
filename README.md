@@ -38,7 +38,7 @@ pip install requests-oauthlib
 You will need to have Ruby (recommended: >= 2.0.0) installed in order to run the code. The Ruby examples use `typheous` as the HTTP client, which needs to be gem installed. For OAuth with user context requests, you'll also need to install the `oauth` gem (see below).
 
 ```bash
-gem install typheous
+gem install typhoeus
 gem install oauth
 ```
 
