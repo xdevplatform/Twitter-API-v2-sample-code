@@ -11,7 +11,7 @@ def create_headers(bearer_token):
     return headers
 
 
-def get_rules(headers, bearer_token):
+def get_rules(headers):
     response = requests.get(
         "https://api.twitter.com/2/tweets/search/stream/rules", headers=headers
     )
@@ -23,7 +23,7 @@ def get_rules(headers, bearer_token):
     return response.json()
 
 
-def delete_all_rules(headers, bearer_token, rules):
+def delete_all_rules(headers, rules):
     if rules is None or "data" not in rules:
         return None
 
@@ -43,7 +43,7 @@ def delete_all_rules(headers, bearer_token, rules):
     print(json.dumps(response.json()))
 
 
-def set_rules(headers, delete, bearer_token):
+def set_rules(headers, delete):
     # You can adjust the rules if needed
     sample_rules = [
         {"value": "dog has:images", "tag": "dog pictures"},
@@ -62,7 +62,7 @@ def set_rules(headers, delete, bearer_token):
     print(json.dumps(response.json()))
 
 
-def get_stream(headers, set, bearer_token):
+def get_stream(headers, setr):
     response = requests.get(
         "https://api.twitter.com/2/tweets/search/stream", headers=headers, stream=True,
     )
@@ -83,9 +83,9 @@ def main():
     bearer_token = os.environ.get("BEARER_TOKEN")
     headers = create_headers(bearer_token)
     rules = get_rules(headers, bearer_token)
-    delete = delete_all_rules(headers, bearer_token, rules)
-    set = set_rules(headers, delete, bearer_token)
-    get_stream(headers, set, bearer_token)
+    delete = delete_all_rules(headers, rules)
+    setr = set_rules(headers, delete)
+    get_stream(headers, setr)
 
 
 if __name__ == "__main__":
