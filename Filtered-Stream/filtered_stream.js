@@ -114,7 +114,6 @@ function streamConnect(retryAttempt) {
                 console.log(data.detail)
                 process.exit(1)
             } else {
-                console.log(data.detail)
                 // Keep alive signal received. Do nothing.
             }
         }
