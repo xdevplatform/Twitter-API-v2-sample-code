@@ -35,7 +35,6 @@ function streamConnect(retryAttempt) {
         console.log(data.detail)
         process.exit(1)
       } else {
-        console.log(data.detail)
         // Keep alive signal received. Do nothing.
       }
     }
@@ -48,7 +47,7 @@ function streamConnect(retryAttempt) {
       // To avoid rate limits, this logic implements exponential backoff, so the wait time
       // will increase if the client cannot reconnect to the stream. 
       setTimeout(() => { 
-        console.warn(`A connection error occurred. Reconnecting...`)
+        console.warn("A connection error occurred. Reconnecting...")
         streamConnect(++retryAttempt);
       }, 2 ** retryAttempt);
     }
