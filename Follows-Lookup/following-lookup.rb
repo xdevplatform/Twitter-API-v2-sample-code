@@ -1,7 +1,7 @@
 # This script uses your bearer token to authenticate and make a request to the User Tweets timeline endpoint.
 
 #Based on recent search example and updated for User mention timeline.
-#Next steps: 
+#Next steps:
 # [] Refactor for User Tweets timeline..
 # [] Refactor for Full-archive search.
 
@@ -42,7 +42,7 @@ def get_following(url, bearer_token, query_params)
   return response
 end
 
-endpoint_url.gsub(':id',id.to_s())
+endpoint_url = endpoint_url.gsub(':id',id.to_s())
 
-response = get_user_tweets(endpoint_url, bearer_token, query_params)
+response = get_following(endpoint_url, bearer_token, query_params)
 puts response.code, JSON.pretty_generate(JSON.parse(response.body))
