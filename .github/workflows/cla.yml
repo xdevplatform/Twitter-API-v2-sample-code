@@ -20,6 +20,6 @@ jobs:
           remote-organization-name: twitter
           remote-repository-name: .github-private
           path-to-signatures: 'cla/signatures.json'
-          path-to-document: 'https://gist.github.com/twitter-service/a1ad5818c024dc4265f8b60e6d043f26'
+          path-to-document: 'https://gist.github.com/I-Cat/36127670dcdcc1989c0d21d4fc3d5325'
           custom-allsigned-prcomment: 'All Contributors have signed the CLA. If the commit check is not passing, a maintainer must go the Checks tab of this PR and rerun the GitHub Action.'
           branch: 'main'
