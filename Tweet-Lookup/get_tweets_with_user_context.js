@@ -138,7 +138,9 @@ async function getRequest({
 
     // Make the request
     const response = await getRequest(oAuthAccessToken);
-    console.log(response);
+    console.dir(response, {
+      depth: null
+    });
 
   } catch (e) {
     console.log(e);

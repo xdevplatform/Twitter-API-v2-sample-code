@@ -45,7 +45,10 @@ const getUserMentions = async () => {
         }
     }
 
-    console.log(userMentions);
+    console.dir(userMentions, {
+        depth: null
+    });
+
     console.log(`Got ${userMentions.length} mentions for user ID ${userId}!`);
 
 }

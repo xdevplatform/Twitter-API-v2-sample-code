@@ -42,8 +42,7 @@ async function getRequest() {
         // Make request
         const response = await getRequest();
         console.dir(response, {
-            depth: null,
-            colors: true
+            depth: null
         });
 
     } catch (e) {

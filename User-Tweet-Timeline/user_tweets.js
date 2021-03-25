@@ -51,7 +51,9 @@ const getUserTweets = async () => {
         }
     }
 
-    console.log(userTweets);
+    console.dir(userTweets, {
+        depth: null
+    });
     console.log(`Got ${userTweets.length} Tweets from ${userName} (user ID ${userId})!`);
 
 }
