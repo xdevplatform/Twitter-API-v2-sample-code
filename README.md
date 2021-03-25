@@ -1,15 +1,19 @@
 # Twitter API v2 sample code [![v2](https://img.shields.io/endpoint?url=https%3A%2F%2Ftwbadges.glitch.me%2Fbadges%2Fv2)](https://developer.twitter.com/en/docs/twitter-api)
 
-Sample code for early access of the Twitter v2 endpoints. Each endpoint has a folder where you can find sample code (Python, Java, Ruby, Node.js, and in some cases, R).
+Sample code for early access to the Twitter v2 endpoints.
+Individual API features have folders where you can find examples of usage in several coding languages (Java, Node.js, Python, R, and Ruby).
 
-## Getting Started
+* [Twitter API v2 Documentation](https://developer.twitter.com/en/docs/twitter-api/early-access)
+* [Getting started Documentation](https://developer.twitter.com/en/docs/twitter-api/getting-started)
 
-* Website: https://developer.twitter.com/en/docs/twitter-api/early-access
-* Getting started: https://developer.twitter.com/en/docs/twitter-api/getting-started
+## Prerequisites
+
+* Twitter Developer account: if you don’t have one already, [you can apply](https://developer.twitter.com/en/apply-for-access) for one.
+* A Project and an App created [in the dashboard](https://developer.twitter.com/en/portal/dashboard).
 
 ## Using the code samples
 
-In order to run the code samples in this repository you will need to create environment variables. You can find your credentials and bearer token in the App inside of your Project in the [dashboard of the developer portal](https://developer.twitter.com/en/portal/projects-and-apps).
+In order to run the samples in this repository you will need to set up some environment variables. You can find your credentials and bearer token in the App inside of your Project in the [dashboard of the developer portal](https://developer.twitter.com/en/portal/projects-and-apps).
 
 For OAuth 1.0a samples, you will need to export your consumer key and secret in your terminal. Be sure to replace `<your_consumer_key>` and `<your_consumer_secret>` with your own credentials without the `< >`.
 
@@ -24,7 +28,30 @@ For samples which use bearer token authentication, you will need to export the b
 export BEARER_TOKEN='<your_bearer_token>'
 ```
 
-## Python environment set up
+## Language-specific requirements
+
+### Java environment set up
+
+If you use Homebrew, you can install a Java runtime using:
+
+```bash
+brew cask install java
+```
+
+You will also need to download the relevant JAR files referenced in the individual samples in order to build and run the code. If you use an IDE, it may be able to do this automatically for you.
+
+### JavaScript (Node.js) environment set up
+
+You will need to have Node.js installed to run this code. All Node.js examples use `needle` as the HTTP client, which needs to be npm installed. For OAuth with user context requests, you'll need to install the `got` and `oauth-1.0a` packages.
+
+```bash
+npm install needle
+npm install got
+npm install oauth-1.0a
+```
+
+### Python environment set up
+
 You will need to have Python 3 installed to run this code. The Python samples use `requests==2.24.0` which uses `requests-oauthlib==1.3.0`.
 
 You can install these packages as follows:
@@ -34,7 +61,8 @@ pip install requests
 pip install requests-oauthlib
 ```
 
-## Ruby environment set up
+### Ruby environment set up
+
 You will need to have Ruby (recommended: >= 2.0.0) installed in order to run the code. The Ruby examples use `typheous` as the HTTP client, which needs to be gem installed. For OAuth with user context requests, you'll also need to install the `oauth` gem (see below).
 
 ```bash
@@ -42,26 +70,12 @@ gem install typheous
 gem install oauth
 ```
 
-## JavaScript (Node.js) environment set up
-You will need to have Node.js installed to run this code. All Node.js examples use `needle` as the HTTP client, which needs to be npm installed. For OAuth with user context requests, you'll need to install the `got` and `oauth-1.0a` packages.
+## Additional resources
 
-```bash
-npm install needle
-npm install got
-npm install oauth-1.0a
-```
+We maintain a [Postman](https://getpostman.com) Collection which you can use for exercising individual API endpoints.
 
-## Java environment set up
-If you use Homebrew, you can install a Java runtime using:
-
-```bash
-brew cask install java
-```
-
-## Prerequisites
-
-* Twitter Developer account: if you don’t have one already, [you can apply](https://developer.twitter.com/en/apply-for-access) for one.
-* A Project and an App created [in the dashboard](https://developer.twitter.com/en/portal/dashboard).
+* [Using Postman with the Twitter API](https://developer.twitter.com/en/docs/tools-and-libraries/using-postman)
+* [Twitter API v2 on the Postman website](https://t.co/twitter-api-postman)
 
 ## Support
 
