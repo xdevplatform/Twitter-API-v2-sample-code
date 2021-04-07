@@ -1,26 +1,18 @@
-# This script uses your bearer token to authenticate and make a request to the User Tweets timeline endpoint.
-
-#Based on recent search example and updated for User mention timeline.
-#Next steps:
-# [] Refactor for User Tweets timeline..
-# [] Refactor for Full-archive search.
-
 require 'json'
 require 'typhoeus'
 
 # The code below sets the bearer token from your environment variables
-# To set environment variables on Mac OS X, run the export command below from the terminal:
+# To set environment variables on macOS or Linux, run the export command below from the terminal:
 # export BEARER_TOKEN='YOUR-TOKEN'
 bearer_token = ENV["BEARER_TOKEN"]
 
-# Endpoint URL for the Recent Search API
+# Endpoint URL for the user following API
 endpoint_url = "https://api.twitter.com/2/users/:id/following"
 
 # Specify the User ID for this request.
-id = 17200003
+id = 2244994945
 
 # Add or remove parameters below to adjust the query and response fields within the payload
-# TODO: See docs for list of param options: https://developer.twitter.com/en/docs/twitter-api/tweets/
 query_params = {
   "max_results" => 1000,
   "user.fields" => "created_at"
