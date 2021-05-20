@@ -38,8 +38,7 @@ def get_user_tweets(url, bearer_token, query_params)
     method: 'get',
     headers: {
       "User-Agent" => "v2RubyExampleCode",
-      "Authorization" => "Bearer #{bearer_token}",
-      "x-des-apiservices" => "staging1". #TODO: remove
+      "Authorization" => "Bearer #{bearer_token}"
     },
     params: query_params
   }
