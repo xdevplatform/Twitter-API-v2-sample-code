@@ -70,6 +70,22 @@ gem install typhoeus
 gem install oauth
 ```
 
+### PHP environment set up
+
+You will need to have PHP 7+ installed with the curl extension enabled in order to run the code.
+
+Make sure the following line isn't commented in the php.ini config:
+
+```bash
+extension=php_curl.dll
+```
+
+For Ubuntu 13.0 and above, you can use the debundled package. It can be installed as follows:
+
+```bash
+sudo apt install php-curl
+```
+
 ## Additional resources
 
 We maintain a [Postman](https://getpostman.com) Collection which you can use for exercising individual API endpoints.
