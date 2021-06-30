@@ -48,7 +48,7 @@ const getFollowing = async () => {
 
 const getPage = async (params, options, nextToken) => {
     if (nextToken) {
-        params.next_token = nextToken;
+        params.pagination_token = nextToken;
     }
 
     try {
