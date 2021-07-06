@@ -4,10 +4,7 @@ import json
 
 # To set your environment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
-
-
-def auth():
-    return os.environ.get("BEARER_TOKEN")
+bearer_token = os.environ.get("BEARER_TOKEN")
 
 
 def create_url():
@@ -27,13 +24,18 @@ def get_params():
     return {"tweet.fields": "created_at"}
 
 
-def create_headers(bearer_token):
-    headers = {"Authorization": "Bearer {}".format(bearer_token)}
-    return headers
+def bearer_oauth(r):
+    """
+    Method required by bearer token authentication.
+    """
+
+    r.headers["Authorization"] = f"Bearer {bearer_token}"
+    r.headers["User-Agent"] = "v2UserTweetsPython"
+    return r
 
 
-def connect_to_endpoint(url, headers, params):
-    response = requests.request("GET", url, headers=headers, params=params)
+def connect_to_endpoint(url, params):
+    response = requests.request("GET", url, auth=bearer_oauth, params=params)
     print(response.status_code)
     if response.status_code != 200:
         raise Exception(
@@ -45,11 +47,9 @@ def connect_to_endpoint(url, headers, params):
 
 
 def main():
-    bearer_token = auth()
     url = create_url()
-    headers = create_headers(bearer_token)
     params = get_params()
-    json_response = connect_to_endpoint(url, headers, params)
+    json_response = connect_to_endpoint(url, params)
     print(json.dumps(json_response, indent=4, sort_keys=True))
 
 
