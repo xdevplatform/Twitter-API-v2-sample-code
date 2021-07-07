@@ -19,7 +19,7 @@ def create_headers(bearer_token):
 
 
 def connect_to_endpoint(url, headers, params):
-    response = requests.request("GET", search_url, headers=headers, params=params)
+    response = requests.request("GET", url, headers=headers, params=params)
     print(response.status_code)
     if response.status_code != 200:
         raise Exception(response.status_code, response.text)
