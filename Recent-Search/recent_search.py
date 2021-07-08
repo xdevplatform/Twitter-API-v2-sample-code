@@ -13,13 +13,17 @@ search_url = "https://api.twitter.com/2/tweets/search/recent"
 query_params = {'query': '(from:twitterdev -is:retweet) OR #twitterdev','tweet.fields': 'author_id'}
 
 
-def create_headers(bearer_token):
-    headers = {"Authorization": "Bearer {}".format(bearer_token)}
-    return headers
+def bearer_oauth(r):
+    """
+    Method required by bearer token authentication.
+    """
 
+    r.headers["Authorization"] = f"Bearer {bearer_token}"
+    r.headers["User-Agent"] = "v2RecentSearchPython"
+    return r
 
-def connect_to_endpoint(url, headers, params):
-    response = requests.request("GET", url, headers=headers, params=params)
+def connect_to_endpoint(url, params):
+    response = requests.get(url, auth=bearer_oauth, params=params)
     print(response.status_code)
     if response.status_code != 200:
         raise Exception(response.status_code, response.text)
@@ -27,8 +31,7 @@ def connect_to_endpoint(url, headers, params):
 
 
 def main():
-    headers = create_headers(bearer_token)
-    json_response = connect_to_endpoint(search_url, headers, query_params)
+    json_response = connect_to_endpoint(search_url, query_params)
     print(json.dumps(json_response, indent=4, sort_keys=True))
 
 

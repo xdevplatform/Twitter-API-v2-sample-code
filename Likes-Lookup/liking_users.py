@@ -4,10 +4,7 @@ import json
 
 # To set your enviornment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
-
-
-def auth():
-    return os.environ.get("BEARER_TOKEN")
+bearer_token = os.environ.get("BEARER_TOKEN")
 
 
 def create_url():
@@ -25,13 +22,18 @@ def create_url():
     return url, user_fields
 
 
-def create_headers(bearer_token):
-    headers = {"Authorization": "Bearer {}".format(bearer_token)}
-    return headers
+def bearer_oauth(r):
+    """
+    Method required by bearer token authentication.
+    """
+
+    r.headers["Authorization"] = f"Bearer {bearer_token}"
+    r.headers["User-Agent"] = "v2LikingUsersPython"
+    return r
 
 
-def connect_to_endpoint(url, headers, user_fields):
-    response = requests.request("GET", url, headers=headers, params=user_fields)
+def connect_to_endpoint(url, user_fields):
+    response = requests.request("GET", url, auth=bearer_oauth, params=user_fields)
     print(response.status_code)
     if response.status_code != 200:
         raise Exception(
@@ -43,10 +45,8 @@ def connect_to_endpoint(url, headers, user_fields):
 
 
 def main():
-    bearer_token = auth()
     url, tweet_fields = create_url()
-    headers = create_headers(bearer_token)
-    json_response = connect_to_endpoint(url, headers, tweet_fields)
+    json_response = connect_to_endpoint(url, tweet_fields)
     print(json.dumps(json_response, indent=4, sort_keys=True))
 
 
