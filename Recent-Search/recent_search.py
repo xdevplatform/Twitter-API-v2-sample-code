@@ -3,7 +3,7 @@ import os
 import json
 
 # To set your environment variables in your terminal run the following line:
-# export 'BEARER_TOKEN'='<your_bearer_token>'
+# export 'BEARER_TOKEN'='<AAAAAAAAAAAAAAAAAAAAAFAbTgEAAAAAGqPEQsATsHXpcyzmHiMwPMokUII%3DovLupuMluavzXsAT2ply5ymA3Hm9XMTmWWRExTq47EF3O3nWL1>'
 bearer_token = os.environ.get("BEARER_TOKEN")
 
 search_url = "https://api.twitter.com/2/tweets/search/recent"
