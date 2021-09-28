@@ -1,5 +1,4 @@
 # This script implements the PIN-based OAuth flow to obtain access tokens for a user context request
-# It then makes a User lookup request (by usernames) with OAuth 1.0a authentication (user context)
 require 'oauth'
 require 'json'
 require 'typhoeus'
