@@ -1,4 +1,5 @@
 # This script implements the PIN-based OAuth flow to obtain access tokens for a user context request
+# It then makes a User lookup request (by usernames) with OAuth 1.0a authentication (user context)
 require 'oauth'
 require 'json'
 require 'typhoeus'
@@ -10,14 +11,14 @@ require 'oauth/request_proxy/typhoeus_request'
 consumer_key = ENV["CONSUMER_KEY"]
 consumer_secret = ENV["CONSUMER_SECRET"]
 
-# Be sure to replace your-user-id with your own user ID or one of an authenticating user
-# You can find a user ID by using the user lookup endpoint
-id = "your-user-id"
-muting_url = "https://api.twitter.com/2/users/#{id}/muting"
 
-# Be sure to add replace id-to-mute with the id of the user you wish to mute.
-# You can find a user ID by using the user lookup endpoint
-@target_user_id = { "target_user_id": "id-to-mute" }
+create_list_url = "https://api.twitter.com/2/lists"
+
+# Be sure to add replace name-of-list with the name you wish to call the list.
+# description and private keys are optional
+@json_payload = { "name": "name-of-list",
+"description": "description-of-list",
+"private": false}
 
 consumer = OAuth::Consumer.new(consumer_key, consumer_secret,
 	                                :site => 'https://api.twitter.com',
@@ -52,14 +53,14 @@ def obtain_access_token(consumer, request_token, pin)
 end
 
 
-def user_mute(url, oauth_params)
+def create_list(url, oauth_params)
 	options = {
 	    :method => :post,
 	    headers: {
-	     	"User-Agent": "v2muteUserRuby",
+	     	"User-Agent": "v2createListRuby",
         "content-type": "application/json"
 	    },
-	    body: JSON.dump(@target_user_id)
+	    body: JSON.dump(@json_payload)
 	}
 	request = Typhoeus::Request.new(url, options)
 	oauth_helper = OAuth::Client::Helper.new(request, oauth_params.merge(:request_uri => url))
@@ -81,5 +82,5 @@ access_token = obtain_access_token(consumer, request_token, pin)
 oauth_params = {:consumer => consumer, :token => access_token}
 
 
-response = user_mute(muting_url, oauth_params)
+response = create_list(create_list_url, oauth_params)
 puts response.code, JSON.pretty_generate(JSON.parse(response.body))

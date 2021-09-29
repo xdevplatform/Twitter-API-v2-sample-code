@@ -13,11 +13,12 @@ consumer_secret = ENV["CONSUMER_SECRET"]
 # Be sure to replace your-user-id with your own user ID or one of an authenticating user
 # You can find a user ID by using the user lookup endpoint
 id = "your-user-id"
-muting_url = "https://api.twitter.com/2/users/#{id}/muting"
 
-# Be sure to add replace id-to-mute with the id of the user you wish to mute.
-# You can find a user ID by using the user lookup endpoint
-@target_user_id = { "target_user_id": "id-to-mute" }
+# Be sure to add replace list-id-to-unpin with the user id of the user you wish to unpin.
+list_id = "list-id-to-unpin"
+
+# Returns a user object for one or more users specified by the requested usernames
+unpin_url = "https://api.twitter.com/2/users/#{id}/pinned_lists/#{list_id}"
 
 consumer = OAuth::Consumer.new(consumer_key, consumer_secret,
 	                                :site => 'https://api.twitter.com',
@@ -52,14 +53,12 @@ def obtain_access_token(consumer, request_token, pin)
 end
 
 
-def user_mute(url, oauth_params)
+def unpin_list(url, oauth_params)
 	options = {
-	    :method => :post,
+	    :method => :delete,
 	    headers: {
-	     	"User-Agent": "v2muteUserRuby",
-        "content-type": "application/json"
-	    },
-	    body: JSON.dump(@target_user_id)
+	     	"User-Agent": "v2unpinListRuby"
+	    }
 	}
 	request = Typhoeus::Request.new(url, options)
 	oauth_helper = OAuth::Client::Helper.new(request, oauth_params.merge(:request_uri => url))
@@ -68,8 +67,6 @@ def user_mute(url, oauth_params)
 
 	return response
 end
-
-
 
 # PIN-based OAuth flow - Step 1
 request_token = get_request_token(consumer)
@@ -80,6 +77,5 @@ access_token = obtain_access_token(consumer, request_token, pin)
 
 oauth_params = {:consumer => consumer, :token => access_token}
 
-
-response = user_mute(muting_url, oauth_params)
+response = unpin_list(unpin_url, oauth_params)
 puts response.code, JSON.pretty_generate(JSON.parse(response.body))
