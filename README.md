@@ -40,6 +40,9 @@ brew cask install java
 
 You will also need to download the relevant JAR files referenced in the individual samples in order to build and run the code. If you use an IDE, it may be able to do this automatically for you.
 
+If you use [Apache Maven](https://maven.apache.org/), there are `pom.xml` that define dependencies to get all relevant JAR files automatically. Use IDEA or 
+Eclipse to open as maven project.
+
 ### JavaScript (Node.js) environment set up
 
 You will need to have Node.js installed to run this code. All Node.js examples use `needle` as the HTTP client, which needs to be npm installed. For OAuth with user context requests, you'll need to install the `got` and `oauth-1.0a` packages.

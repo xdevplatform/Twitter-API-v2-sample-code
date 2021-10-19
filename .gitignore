@@ -1,3 +1,15 @@
+### Java
+# IDEA, PyCharm files
+/.idea
+*.iml
+# maven build
+/target
+/*/target/
+
+### Python
+/venv
+
+### Ruby
 *.gem
 *.rbc
 /.config
@@ -19,7 +31,7 @@ yarn.lock
 ../yarn.lock
 
 # Used by dotenv library to load environment variables.
-# .env
+.env
 
 # Ignore Byebug command history file.
 .byebug_history
