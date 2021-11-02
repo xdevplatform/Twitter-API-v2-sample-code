@@ -32,7 +32,7 @@ public class FilteredStreamDemo {
       setupRules(bearerToken, rules);
       connectStream(bearerToken);
     } else {
-      System.out.println("There was a problem getting you bearer token. Please make sure you set the BEARER_TOKEN environment variable");
+      System.out.println("There was a problem getting your bearer token. Please make sure you set the BEARER_TOKEN environment variable");
     }
   }
 
