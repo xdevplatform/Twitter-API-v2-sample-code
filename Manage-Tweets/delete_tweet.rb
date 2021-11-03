@@ -10,7 +10,7 @@ consumer_key = ENV["CONSUMER_KEY"]
 consumer_secret = ENV["CONSUMER_SECRET"]
 
 # Be sure to replace your-tweet-id with the id of the Tweet you wish to delete.
-id = "1455946260826017797"
+id = "your-tweet-id"
 
 delete_tweet_url = "https://api.twitter.com/2/tweets/#{id}"
 
