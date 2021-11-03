@@ -12,7 +12,7 @@ consumer_secret = os.environ.get("CONSUMER_SECRET")
 
 # Be sure to replace tweet-id-to-delete with the id of the Tweet you wish to delete. The authenticated user must own the list in order to delete
 
-id = "1455946146191454212"
+id = "tweet-id-to-delete"
 
 
 # Get request token
