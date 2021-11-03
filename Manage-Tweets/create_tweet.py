@@ -6,11 +6,14 @@ import json
 # export 'CONSUMER_KEY'='<your_consumer_key>'
 # export 'CONSUMER_SECRET'='<your_consumer_secret>'
 
-consumer_key = "d7MEAv4mZhhCXmDl3IdKEJ9Lq"
-consumer_secret = "axzwg7UuUvXTi26D5L46TwX5h0mySP82euRIguFH6dnka1DCBN"
+consumer_key = os.environ.get("CONSUMER_KEY")
+consumer_secret = os.environ.get("CONSUMER_SECRET")
 
-# Be sure to add replace the text of the with the text you wish to Tweet. You can also add parameters to post polls, quote Tweets, Tweet with reply settings, and Tweet to Super Followers in addition to other features.
-payload = {"text": "Hello world!"}
+
+# Be sure to replace tweet-id-to-delete with the id of the Tweet you wish to delete. The authenticated user must own the list in order to delete
+
+id = "tweet-id-to-delete"
+
 
 # Get request token
 request_token_url = "https://api.twitter.com/oauth/request_token"
@@ -56,13 +59,9 @@ oauth = OAuth1Session(
 )
 
 # Making the request
-response = oauth.post(
-    "https://api.twitter.com/2/tweets",
-    json=payload,
-    headers={"x-des-apiservices": "staging1"},
-)
+response = oauth.delete("https://api.twitter.com/2/tweets/{}".format(id))
 
-if response.status_code != 201:
+if response.status_code != 200:
     raise Exception(
         "Request returned an error: {} {}".format(response.status_code, response.text)
     )
@@ -71,4 +70,4 @@ print("Response code: {}".format(response.status_code))
 
 # Saving the response as JSON
 json_response = response.json()
-print(json.dumps(json_response, indent=4, sort_keys=True))
+print(json_response)
