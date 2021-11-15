@@ -1,15 +1,14 @@
 # Twitter API v2 sample code [![v2](https://img.shields.io/endpoint?url=https%3A%2F%2Ftwbadges.glitch.me%2Fbadges%2Fv2)](https://developer.twitter.com/en/docs/twitter-api)
 
-Sample code for early access to the Twitter v2 endpoints.
+Sample code for the Twitter API v2 endpoints.
 Individual API features have folders where you can find examples of usage in several coding languages (Java, Node.js, Python, R, and Ruby).
 
-* [Twitter API v2 Documentation](https://developer.twitter.com/en/docs/twitter-api/early-access)
-* [Getting started Documentation](https://developer.twitter.com/en/docs/twitter-api/getting-started)
+* [Twitter API Documentation](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api)
 
 ## Prerequisites
 
-* Twitter Developer account: if you don’t have one already, [you can apply](https://developer.twitter.com/en/apply-for-access) for one.
-* A Project and an App created [in the dashboard](https://developer.twitter.com/en/portal/dashboard).
+* Twitter API Essential Access ([sign up here](https://developer.twitter.com/en/portal/petition/essential/basic-info))
+* A Project and an App created [in the dashboard](https://developer.twitter.com/en/portal/dashboard)
 
 ## Using the code samples
 
@@ -74,7 +73,7 @@ gem install oauth
 
 We maintain a [Postman](https://getpostman.com) Collection which you can use for exercising individual API endpoints.
 
-* [Using Postman with the Twitter API](https://developer.twitter.com/en/docs/tools-and-libraries/using-postman)
+* [Using Postman with the Twitter API](https://developer.twitter.com/en/docs/tutorials/postman-getting-started)
 * [Twitter API v2 on the Postman website](https://t.co/twitter-api-postman)
 
 ## Support
@@ -83,19 +82,14 @@ We maintain a [Postman](https://getpostman.com) Collection which you can use for
 
 * If there's an bug or issue with the sample code itself, please create a [new issue](https://github.com/twitterdev/Twitter-API-v2-sample-code/issues) here on GitHub.
 
-* If you have questions about the future, check out these resources:
-  * [Guide to the Future of the Twitter API](https://developer.twitter.com/en/products/twitter-api/early-access/guide)
-  * [Twitter API Roadmap](https://t.co/roadmap)
-  * [Twitter Developer Feedback](https://twitterdevfeedback.uservoice.com/forums/930250-twitter-api), where you can post and vote on ideas and feature requests
-
 ## Contributing
 
 We welcome pull requests that add meaningful additions to these code samples, particularly for languages that are not yet represented here.
 
-We feel that a welcoming community is important and we ask that you follow Twitter's [Open Source Code of Conduct](https://github.com/twitter/code-of-conduct/blob/master/code-of-conduct.md) in all interactions with the community.
+We feel that a welcoming community is important and we ask that you follow Twitter's [Open Source Code of Conduct](https://github.com/twitter/.github/blob/main/code-of-conduct.md) in all interactions with the community.
 
 ## License
 
-Copyright 2020 Twitter, Inc.
+Copyright 2021 Twitter, Inc.
 
 Licensed under the Apache License, Version 2.0: https://www.apache.org/licenses/LICENSE-2.0
