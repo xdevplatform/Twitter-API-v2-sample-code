@@ -21,7 +21,7 @@ const getUserMentions = async () => {
 
     const options = {
         headers: {
-            "User-Agent": "v2UserMentionssJS",
+            "User-Agent": "v2UserMentionsJS",
             "authorization": `Bearer ${bearerToken}`
         }
     }
