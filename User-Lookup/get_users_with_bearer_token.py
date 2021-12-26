@@ -2,9 +2,13 @@ import requests
 import os
 import json
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # To set your enviornment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
-bearer_token = os.environ.get("BEARER_TOKEN")
+bearer_token = os.getenv("BEARER_TOKEN")
 
 
 def create_url():
