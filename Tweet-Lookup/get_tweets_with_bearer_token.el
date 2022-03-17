@@ -21,10 +21,13 @@
 ;;; Code:
 
 (require 'request)
+;; https://github.com/tkf/emacs-request
 
+;; Retrieve your Environment Variable with the bearer token
+;; Alternately, you could just put the token here as the other vars
+;; (setq bearer-token ...)
 (defvar bearer-token (getenv "BEARER_TOKEN"))
 
-(setq tweet_fields "tweet.fields=lang,author_id")
 ;; Tweet fields are adjustable.
 ;; Options include:
 ;; attachments, author_id, context_annotations,
@@ -32,19 +35,22 @@
 ;; in_reply_to_user_id, lang, non_public_metrics, organic_metrics,
 ;; possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets,
 ;; source, text, and withheld
+(setq tweet_fields "tweet.fields=lang,author_id")
 
-(setq ids "ids=1278747501642657792,1255542774432063488")
 ;; You can adjust ids to include a single Tweet.
 ;; Or you can add to up to 100 comma-separated IDs
+(setq ids "ids=1278747501642657792,1255542774432063488")
 
 ;; Let's build up the URL
 (setq url (concat "https://api.twitter.com/2/tweets?" ids "&" tweet_fields))
 
-;; Headers for the GET call
-(setq auth_header (concat "Bearer " bearer_token))
+;; Headers for the request
 (setq hdrs '())
+;; We need just this field for authorization
+(setq auth_header (concat "Bearer " bearer_token))
 (add-to-list 'hdrs (cons "Authorization" (concat "Bearer " bearer_token)))
 
+;; Core function with the actual GET request
 (request url
   :type "GET"
   :headers hdrs
