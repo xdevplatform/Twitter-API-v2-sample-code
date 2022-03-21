@@ -7,7 +7,7 @@ Individual API features have folders where you can find examples of usage in sev
 
 ## Prerequisites
 
-* Twitter API Essential Access ([sign up here](https://developer.twitter.com/en/portal/petition/essential/basic-info))
+* Twitter API Essential Access ([sign up here](https://t.co/signup))
 * A Project and an App created [in the dashboard](https://developer.twitter.com/en/portal/dashboard)
 
 ## Using the code samples
