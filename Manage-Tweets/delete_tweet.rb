@@ -1,4 +1,3 @@
-# This script implements the PIN-based OAuth flow to obtain access tokens for a user context request
 require 'oauth'
 require 'json'
 require 'typhoeus'
@@ -10,14 +9,11 @@ require 'oauth/request_proxy/typhoeus_request'
 consumer_key = ENV["CONSUMER_KEY"]
 consumer_secret = ENV["CONSUMER_SECRET"]
 
-# Be sure to replace your-user-id with your own user ID or one of an authenticating user
-# You can find a user ID by using the user lookup endpoint
-id = "your-user-id"
-muting_url = "https://api.twitter.com/2/users/#{id}/muting"
+# Be sure to replace your-tweet-id with the id of the Tweet you wish to delete.
+id = "your-tweet-id"
 
-# Be sure to add replace id-to-mute with the id of the user you wish to mute.
-# You can find a user ID by using the user lookup endpoint
-@target_user_id = { "target_user_id": "id-to-mute" }
+delete_tweet_url = "https://api.twitter.com/2/tweets/#{id}"
+
 
 consumer = OAuth::Consumer.new(consumer_key, consumer_secret,
 	                                :site => 'https://api.twitter.com',
@@ -52,14 +48,13 @@ def obtain_access_token(consumer, request_token, pin)
 end
 
 
-def user_mute(url, oauth_params)
+def delete_tweet(url, oauth_params)
 	options = {
-	    :method => :post,
+	    :method => :delete,
 	    headers: {
-	     	"User-Agent": "v2muteUserRuby",
+	     	"User-Agent": "v2DeleteTweetRuby",
         "content-type": "application/json"
-	    },
-	    body: JSON.dump(@target_user_id)
+	    }
 	}
 	request = Typhoeus::Request.new(url, options)
 	oauth_helper = OAuth::Client::Helper.new(request, oauth_params.merge(:request_uri => url))
@@ -81,5 +76,4 @@ access_token = obtain_access_token(consumer, request_token, pin)
 oauth_params = {:consumer => consumer, :token => access_token}
 
 
-response = user_mute(muting_url, oauth_params)
-puts response.code, JSON.pretty_generate(JSON.parse(response.body))
+response = delete_tweet(delete_tweet_url, oauth_params)

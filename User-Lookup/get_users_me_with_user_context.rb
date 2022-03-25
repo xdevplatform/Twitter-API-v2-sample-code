@@ -1,4 +1,3 @@
-# This script implements the PIN-based OAuth flow to obtain access tokens for a user context request
 require 'oauth'
 require 'json'
 require 'typhoeus'
@@ -10,14 +9,7 @@ require 'oauth/request_proxy/typhoeus_request'
 consumer_key = ENV["CONSUMER_KEY"]
 consumer_secret = ENV["CONSUMER_SECRET"]
 
-# Be sure to replace your-user-id with your own user ID or one of an authenticating user
-# You can find a user ID by using the user lookup endpoint
-id = "your-user-id"
-muting_url = "https://api.twitter.com/2/users/#{id}/muting"
-
-# Be sure to add replace id-to-mute with the id of the user you wish to mute.
-# You can find a user ID by using the user lookup endpoint
-@target_user_id = { "target_user_id": "id-to-mute" }
+user_lookup_url = "https://api.twitter.com/2/users/me"
 
 consumer = OAuth::Consumer.new(consumer_key, consumer_secret,
 	                                :site => 'https://api.twitter.com',
@@ -51,15 +43,21 @@ def obtain_access_token(consumer, request_token, pin)
 	return access_token
 end
 
+# Add or remove optional parameters values from the params object below. Full list of parameters and their values can be found in the docs:
+# https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users
+query_params = {
+  # "expansions": "pinned_tweet_id",
+  # "tweet.fields": "attachments,author_id,conversation_id,created_at,entities,geo,id,in_reply_to_user_id,lang",
+  "user.fields": "created_at,description"
+}
 
-def user_mute(url, oauth_params)
+def user_lookup(url, oauth_params, query_params)
 	options = {
-	    :method => :post,
+	    :method => :get,
 	    headers: {
-	     	"User-Agent": "v2muteUserRuby",
-        "content-type": "application/json"
+	     	"User-Agent": "v2UserLookupRuby"
 	    },
-	    body: JSON.dump(@target_user_id)
+	    params: query_params
 	}
 	request = Typhoeus::Request.new(url, options)
 	oauth_helper = OAuth::Client::Helper.new(request, oauth_params.merge(:request_uri => url))
@@ -68,8 +66,6 @@ def user_mute(url, oauth_params)
 
 	return response
 end
-
-
 
 # PIN-based OAuth flow - Step 1
 request_token = get_request_token(consumer)
@@ -80,6 +76,5 @@ access_token = obtain_access_token(consumer, request_token, pin)
 
 oauth_params = {:consumer => consumer, :token => access_token}
 
-
-response = user_mute(muting_url, oauth_params)
+response = user_lookup(user_lookup_url, oauth_params, query_params)
 puts response.code, JSON.pretty_generate(JSON.parse(response.body))

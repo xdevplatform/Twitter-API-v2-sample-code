@@ -13,14 +13,13 @@ user_lookup_url = "https://api.twitter.com/2/users"
 # Specify the User IDs that you want to lookup below (to 100 per request)
 user_ids = "2244994945,783214"
 
-# Add or remove optional parameters values from the params object below. Full list of parameters and their values can be found in the docs:
-# https://developer.twitter.com/en/docs/twitter-api/tweets/sampled-stream/api-reference/get-tweets-sample-stream
+# Add or remove optional parameters values from the params object below. Full list of parameters and their values can be found in the docs
 params = {
 	"ids": user_ids,
   "expansions": "pinned_tweet_id",
   "tweet.fields": "attachments,author_id,conversation_id,created_at,entities,geo,id,in_reply_to_user_id,lang",
   # "user.fields": "name"
-  # "media.fields": "url", 
+  # "media.fields": "url",
   # "place.fields": "country_code",
   # "poll.fields": "options"
 }

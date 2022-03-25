@@ -11,12 +11,12 @@ bearer_token = ENV["BEARER_TOKEN"]
 stream_url = "https://api.twitter.com/2/tweets/sample/stream"
 
 # Add or remove optional parameters values from the params object below. Full list of parameters and their values can be found in the docs:
-# https://developer.twitter.com/en/docs/twitter-api/tweets/sampled-stream/api-reference/get-tweets-sample-stream
+# https://developer.twitter.com/en/docs/twitter-api/tweets/volume-streams/api-reference/get-tweets-sample-stream
 params = {
   # "expansions": "author_id,referenced_tweets.id",
   "tweet.fields": "attachments,author_id,conversation_id,created_at,entities,geo,id,in_reply_to_user_id,lang",
   # "user.fields": "name"
-  # "media.fields": "url", 
+  # "media.fields": "url",
   # "place.fields": "country_code",
   # "poll.fields": "options"
 }
