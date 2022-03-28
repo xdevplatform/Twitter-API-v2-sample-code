@@ -67,7 +67,7 @@ auth = False
 
 # If you are using a confidential client you will need to pass in basic encoding of your client ID and client secret.
 
-# Please the comment on the following line if you are using a type of App that is a confidential client
+# Please remove the comment on the following line if you are using a type of App that is a confidential client
 # auth = HTTPBasicAuth(client_id, client_secret)
 
 token = oauth.fetch_token(
