@@ -51,9 +51,9 @@ func GetRetweetedBy() {
 	bearerToken := os.Getenv("BEARER_TOKEN")
 
 	client := &http.Client{}
-	request, errCreateReq := http.NewRequest("GET", url, nil)
-	if errCreateReq != nil {
-		log.Println(errCreateReq)
+	request, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		log.Println(err)
 		return
 	}
 
@@ -70,16 +70,16 @@ func GetRetweetedBy() {
 	request.URL.RawQuery = q.Encode()
 
 	// Send Request
-	response, requestErr := client.Do(request)
-	if requestErr != nil {
-		log.Println(requestErr)
+	response, err := client.Do(request)
+	if err != nil {
+		log.Println(err)
 		return
 	}
 
 	var retweetedBy RetweetedBy
-	jsonDecodeErr := json.NewDecoder(response.Body).Decode(&retweetedBy)
-	if jsonDecodeErr != nil {
-		log.Println(jsonDecodeErr)
+	err = json.NewDecoder(response.Body).Decode(&retweetedBy)
+	if err != nil {
+		log.Println("err to decode json", err)
 		return
 	}
 	fmt.Println(retweetedBy)

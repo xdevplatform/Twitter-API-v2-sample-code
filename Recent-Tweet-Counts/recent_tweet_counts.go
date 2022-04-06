@@ -38,9 +38,9 @@ func RecentTweetCount() {
 	bearerToken := os.Getenv("BEARER_TOKEN")
 	client := http.Client{}
 
-	request, errCreateReq := http.NewRequest("GET", url, nil)
-	if errCreateReq != nil {
-		log.Println(errCreateReq)
+	request, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		log.Println(err)
 	}
 	// Add Bearer Token to HTTP Header
 	request.Header.Set("Authorization", "Bearer "+bearerToken)
@@ -52,17 +52,17 @@ func RecentTweetCount() {
 	request.URL.RawQuery = q.Encode()
 
 	// Send Request
-	response, responseErr := client.Do(request)
-	if responseErr != nil {
-		log.Println(responseErr)
+	response, err := client.Do(request)
+	if err != nil {
+		log.Println(err)
 	}
 
 	defer response.Body.Close()
 
 	var recentTweet RecentTweets
-	jsonDecodeErr := json.NewDecoder(response.Body).Decode(&recentTweet)
-	if jsonDecodeErr != nil {
-		log.Println(jsonDecodeErr)
+	err = json.NewDecoder(response.Body).Decode(&recentTweet)
+	if err != nil {
+		log.Println(err)
 	}
 
 	fmt.Println(recentTweet)

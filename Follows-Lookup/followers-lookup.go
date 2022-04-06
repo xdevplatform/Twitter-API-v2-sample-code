@@ -53,9 +53,9 @@ func UserFollowers() {
 
 	client := &http.Client{}
 
-	request, createReqErr := http.NewRequest("GET", url, nil)
-	if createReqErr != nil {
-		log.Println(createReqErr)
+	request, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		log.Println(err)
 		return
 	}
 
@@ -71,16 +71,19 @@ func UserFollowers() {
 	request.URL.RawQuery = q.Encode()
 
 	// Send Request
-	response, responseErr := client.Do(request)
+	response, err := client.Do(request)
 
-	if responseErr != nil {
-		log.Println(responseErr)
+	if err != nil {
+		log.Println(err)
 	}
 
 	defer response.Body.Close()
 
 	var userObject UserFollower
-	json.NewDecoder(response.Body).Decode(&userObject)
+	err = json.NewDecoder(response.Body).Decode(&userObject)
+	if err != nil {
+		log.Println("error to decode json", err)
+	}
 
 	fmt.Println(userObject)
 }
