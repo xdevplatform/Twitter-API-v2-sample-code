@@ -16,7 +16,7 @@ import org.apache.http.util.EntityUtils;
  * */
 public class GetJobById {
 
-  // To set your enviornment variables in your terminal run the following line:
+  // To set your environment variables in your terminal run the following line:
   // export 'BEARER_TOKEN'='<your_bearer_token>'
 
   public static void main(String args[]) throws IOException, URISyntaxException {
