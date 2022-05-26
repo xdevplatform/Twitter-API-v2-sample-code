@@ -8,14 +8,14 @@ from requests.auth import AuthBase, HTTPBasicAuth
 from requests_oauthlib import OAuth2Session
 
 # First, you will need to enable OAuth 2.0 in your App’s auth settings in the Developer Portal to get your client ID.
-# Inside your terminal you will need to set an enviornment variable
+# Inside your terminal you will need to set an environment variable
 # export CLIENT_ID='your-client-id'
 client_id = os.environ.get("CLIENT_ID")
 
 # If you have selected a type of App that is a confidential client you will need to set a client secret.
 # Confidential Clients securely authenticate with the authorization server.
 
-# Inside your terminal you will need to set an enviornment variable
+# Inside your terminal you will need to set an environment variable
 # export CLIENT_SECRET='your-client-secret'
 
 # Remove the comment on the following line if you are using a confidential client

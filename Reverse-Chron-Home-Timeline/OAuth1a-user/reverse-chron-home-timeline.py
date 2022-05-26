@@ -2,7 +2,7 @@ from requests_oauthlib import OAuth1Session
 import os
 import json
 
-# To set your enviornment variables in your terminal run the following line:
+# To set your environment variables in your terminal run the following line:
 # export 'CONSUMER_KEY'='<your_consumer_key>'
 # export 'CONSUMER_SECRET'='<your_consumer_secret>'
 consumer_key = os.environ.get("CONSUMER_KEY")
