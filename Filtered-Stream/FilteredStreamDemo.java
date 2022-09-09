@@ -89,7 +89,7 @@ public class FilteredStreamDemo {
     HttpPost httpPost = new HttpPost(uriBuilder.build());
     httpPost.setHeader("Authorization", String.format("Bearer %s", bearerToken));
     httpPost.setHeader("content-type", "application/json");
-    StringEntity body = new StringEntity(getFormattedString("{\"add\": [%s]}", rules));
+    StringEntity body = new StringEntity(getFormattedString("{\"add\": [%s]}", rules),  "UTF-8");
     httpPost.setEntity(body);
     HttpResponse response = httpClient.execute(httpPost);
     HttpEntity entity = response.getEntity();
