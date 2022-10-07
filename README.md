@@ -53,6 +53,13 @@ npm install oauth-1.0a
 
 You will need to have Python 3 installed to run this code. The Python samples use `requests==2.24.0` which uses `requests-oauthlib==1.3.0`.
 
+(Optionally) It is common and recommended not to install required package globally, but locally under project subfolder using `venv`:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
 You can install these packages as follows:
 
 ```bash
