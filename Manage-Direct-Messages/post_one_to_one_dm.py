@@ -12,7 +12,7 @@ POST_DM_URL = "https://api.twitter.com/2/dm_conversations/with/:participant_id/m
 #-----------------------------------------------------------------------------------------------------------------------
 # These variables need to be updated to the setting that match how your Twitter App is set-up at
 # https://developer.twitter.com/en/portal/dashboard. These will not change from run-by-run.
-client_id = 'dE5vYmJaa3o5QWRlNEt1T01DZ206MTpjaQ'
+client_id = ''
 #This must match *exactly* the redirect URL specified in the Developer Portal.
 redirect_uri = "https://www.example.com"
 #-----------------------------------------------------------------------------------------------------------------------
