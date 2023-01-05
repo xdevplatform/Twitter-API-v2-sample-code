@@ -105,7 +105,7 @@ async function getRequest({ oauth_token, oauth_token_secret }) {
     headers: {
       Authorization: authHeader["Authorization"],
       "user-agent": "v2DeleteTweetJS",
-      "content-type": "application/json"
+      "content-type": "application/json",
       accept: "application/json",
     },
   });
