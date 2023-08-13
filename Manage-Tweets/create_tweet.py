@@ -1,26 +1,30 @@
 from requests_oauthlib import OAuth1Session
 import os
 import json
+from dotenv import load_dotenv
+load_dotenv()
 
 # In your terminal please set your environment variables by running the following lines of code.
-# export 'CONSUMER_KEY'='<your_consumer_key>'
-# export 'CONSUMER_SECRET'='<your_consumer_secret>'
+# export 'api_key'='<your_API_KEY>'
+# export 'api_key_secret'='<your_api_key_secret>'
 
-consumer_key = os.environ.get("CONSUMER_KEY")
-consumer_secret = os.environ.get("CONSUMER_SECRET")
+
+api_key = os.environ["API_KEY"]
+api_key_secret = os.environ["API_KEY_SECRET"]
 
 # Be sure to add replace the text of the with the text you wish to Tweet. You can also add parameters to post polls, quote Tweets, Tweet with reply settings, and Tweet to Super Followers in addition to other features.
-payload = {"text": "Hello world!"}
+payload = {"text": "This was tweeted from VScode in Python!"}
 
 # Get request token
 request_token_url = "https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=write"
-oauth = OAuth1Session(consumer_key, client_secret=consumer_secret)
+oauth = OAuth1Session(api_key
+, client_secret=api_key_secret)
 
 try:
     fetch_response = oauth.fetch_request_token(request_token_url)
 except ValueError:
     print(
-        "There may have been an issue with the consumer_key or consumer_secret you entered."
+        "There may have been an issue with the API_KEY_SECRET or api_key_secret you entered."
     )
 
 resource_owner_key = fetch_response.get("oauth_token")
@@ -36,8 +40,8 @@ verifier = input("Paste the PIN here: ")
 # Get the access token
 access_token_url = "https://api.twitter.com/oauth/access_token"
 oauth = OAuth1Session(
-    consumer_key,
-    client_secret=consumer_secret,
+    api_key,
+    client_secret=api_key_secret,
     resource_owner_key=resource_owner_key,
     resource_owner_secret=resource_owner_secret,
     verifier=verifier,
@@ -49,8 +53,8 @@ access_token_secret = oauth_tokens["oauth_token_secret"]
 
 # Make the request
 oauth = OAuth1Session(
-    consumer_key,
-    client_secret=consumer_secret,
+    api_key,
+    client_secret=api_key_secret,
     resource_owner_key=access_token,
     resource_owner_secret=access_token_secret,
 )
