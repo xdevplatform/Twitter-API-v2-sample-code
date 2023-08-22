@@ -31,7 +31,7 @@ end
 def get_user_authorization(request_token)
 	puts "Follow this URL to have a user authorize your app: #{request_token.authorize_url()}"
 	puts "Enter PIN: "
-	pin = gets.strip
+	pin = $stdin.gets.strip
 
   return pin
 end
