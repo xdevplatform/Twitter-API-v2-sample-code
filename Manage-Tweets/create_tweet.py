@@ -13,7 +13,7 @@ api_key = os.environ["API_KEY"]
 api_key_secret = os.environ["API_KEY_SECRET"]
 
 # Be sure to add replace the text of the with the text you wish to Tweet. You can also add parameters to post polls, quote Tweets, Tweet with reply settings, and Tweet to Super Followers in addition to other features.
-payload = {"text": "This was tweeted from VScode in Python!"}
+payload = {"text": "You guys didn't tell me that IELTS are that expensive. Damn!"}
 
 # Get request token
 request_token_url = "https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=write"
