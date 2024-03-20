@@ -19,7 +19,7 @@ def create_url():
     # Be sure to replace your-user-id with your own user ID or one of an authenticating user
     # You can find a user ID by using the user lookup endpoint
     id = "your-user-id"
-    # You can adjust ids to include a single Tweets.
+    # You can adjust ids to include a single ID.
     # Or you can add to up to 100 comma-separated IDs
     url = "https://api.twitter.com/2/users/{}/liked_tweets".format(id)
     return url, tweet_fields
