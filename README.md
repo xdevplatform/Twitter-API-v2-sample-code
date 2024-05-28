@@ -34,7 +34,7 @@ export BEARER_TOKEN='<your_bearer_token>'
 If you use Homebrew, you can install a Java runtime using:
 
 ```bash
-brew cask install java
+brew install --cask java
 ```
 
 You will also need to download the relevant JAR files referenced in the individual samples in order to build and run the code. If you use an IDE, it may be able to do this automatically for you.
