@@ -4,16 +4,22 @@ import json
 
 # To set your enviornment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
+bearer_token = os.environ.get("BEARER_TOKEN")
 
 
-def create_headers(bearer_token):
-    headers = {"Authorization": "Bearer {}".format(bearer_token)}
-    return headers
+def bearer_oauth(r):
+    """
+    Method required by bearer token authentication.
+    """
+
+    r.headers["Authorization"] = f"Bearer {bearer_token}"
+    r.headers["User-Agent"] = "v2FilteredStreamPython"
+    return r
 
 
-def get_rules(headers, bearer_token):
+def get_rules():
     response = requests.get(
-        "https://api.twitter.com/2/tweets/search/stream/rules", headers=headers
+        "https://api.twitter.com/2/tweets/search/stream/rules", auth=bearer_oauth
     )
     if response.status_code != 200:
         raise Exception(
@@ -23,7 +29,7 @@ def get_rules(headers, bearer_token):
     return response.json()
 
 
-def delete_all_rules(headers, bearer_token, rules):
+def delete_all_rules(rules):
     if rules is None or "data" not in rules:
         return None
 
@@ -31,7 +37,7 @@ def delete_all_rules(headers, bearer_token, rules):
     payload = {"delete": {"ids": ids}}
     response = requests.post(
         "https://api.twitter.com/2/tweets/search/stream/rules",
-        headers=headers,
+        auth=bearer_oauth,
         json=payload
     )
     if response.status_code != 200:
@@ -43,7 +49,7 @@ def delete_all_rules(headers, bearer_token, rules):
     print(json.dumps(response.json()))
 
 
-def set_rules(headers, delete, bearer_token):
+def set_rules(delete):
     # You can adjust the rules if needed
     sample_rules = [
         {"value": "dog has:images", "tag": "dog pictures"},
@@ -52,7 +58,7 @@ def set_rules(headers, delete, bearer_token):
     payload = {"add": sample_rules}
     response = requests.post(
         "https://api.twitter.com/2/tweets/search/stream/rules",
-        headers=headers,
+        auth=bearer_oauth,
         json=payload,
     )
     if response.status_code != 201:
@@ -62,9 +68,9 @@ def set_rules(headers, delete, bearer_token):
     print(json.dumps(response.json()))
 
 
-def get_stream(headers, set, bearer_token):
+def get_stream(set):
     response = requests.get(
-        "https://api.twitter.com/2/tweets/search/stream", headers=headers, stream=True,
+        "https://api.twitter.com/2/tweets/search/stream", auth=bearer_oauth, stream=True,
     )
     print(response.status_code)
     if response.status_code != 200:
@@ -80,12 +86,10 @@ def get_stream(headers, set, bearer_token):
 
 
 def main():
-    bearer_token = os.environ.get("BEARER_TOKEN")
-    headers = create_headers(bearer_token)
-    rules = get_rules(headers, bearer_token)
-    delete = delete_all_rules(headers, bearer_token, rules)
-    set = set_rules(headers, delete, bearer_token)
-    get_stream(headers, set, bearer_token)
+    rules = get_rules()
+    delete = delete_all_rules(rules)
+    set = set_rules(delete)
+    get_stream(set)
 
 
 if __name__ == "__main__":

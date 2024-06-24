@@ -4,23 +4,25 @@ import json
 
 # To set your environment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
-
-
-def auth():
-    return os.environ.get("BEARER_TOKEN")
+bearer_token = os.environ.get("BEARER_TOKEN")
 
 
 def create_url():
     return "https://api.twitter.com/2/tweets/sample/stream"
 
 
-def create_headers(bearer_token):
-    headers = {"Authorization": "Bearer {}".format(bearer_token)}
-    return headers
+def bearer_oauth(r):
+    """
+    Method required by bearer token authentication.
+    """
+
+    r.headers["Authorization"] = f"Bearer {bearer_token}"
+    r.headers["User-Agent"] = "v2SampledStreamPython"
+    return r
 
 
-def connect_to_endpoint(url, headers):
-    response = requests.request("GET", url, headers=headers, stream=True)
+def connect_to_endpoint(url):
+    response = requests.request("GET", url, auth=bearer_oauth, stream=True)
     print(response.status_code)
     for response_line in response.iter_lines():
         if response_line:
@@ -35,12 +37,10 @@ def connect_to_endpoint(url, headers):
 
 
 def main():
-    bearer_token = auth()
     url = create_url()
-    headers = create_headers(bearer_token)
     timeout = 0
     while True:
-        connect_to_endpoint(url, headers)
+        connect_to_endpoint(url)
         timeout += 1
 
 

@@ -4,10 +4,7 @@ import json
 
 # To set your enviornment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
-
-
-def auth():
-    return os.environ.get("BEARER_TOKEN")
+bearer_token = os.environ.get("BEARER_TOKEN")
 
 
 def create_url():
@@ -23,13 +20,18 @@ def create_url():
     return url
 
 
-def create_headers(bearer_token):
-    headers = {"Authorization": "Bearer {}".format(bearer_token)}
-    return headers
+def bearer_oauth(r):
+    """
+    Method required by bearer token authentication.
+    """
+
+    r.headers["Authorization"] = f"Bearer {bearer_token}"
+    r.headers["User-Agent"] = "v2UserLookupPython"
+    return r
 
 
-def connect_to_endpoint(url, headers):
-    response = requests.request("GET", url, headers=headers)
+def connect_to_endpoint(url):
+    response = requests.request("GET", url, auth=bearer_oauth,)
     print(response.status_code)
     if response.status_code != 200:
         raise Exception(
@@ -41,10 +43,8 @@ def connect_to_endpoint(url, headers):
 
 
 def main():
-    bearer_token = auth()
     url = create_url()
-    headers = create_headers(bearer_token)
-    json_response = connect_to_endpoint(url, headers)
+    json_response = connect_to_endpoint(url)
     print(json.dumps(json_response, indent=4, sort_keys=True))
 
 
