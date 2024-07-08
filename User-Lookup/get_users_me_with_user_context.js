@@ -19,7 +19,7 @@ const consumer_secret = process.env.CONSUMER_SECRET;
 // by default, only the Tweet ID and text are returned
 const params = 'user.fields=created_at,description&expansions=pinned_tweet_id' // Edit optional query parameters here
 
-const endpointURL = `https://api.twitter.com/2/users/me?{params}`;
+const endpointURL = `https://api.twitter.com/2/users/me?${params}`;
 
 // this example uses PIN-based OAuth to authorize the user
 const requestTokenURL = 'https://api.twitter.com/oauth/request_token?oauth_callback=oob';
