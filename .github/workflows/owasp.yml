@@ -1,0 +1,14 @@
+            - name: OWASP Amass Enum
+  # You may pin to the exact commit or the version.
+  # uses: fguisso/amass-action@b5db9490e22b59278100f93bbadca2b99250de5a
+  uses: fguisso/amass-action@1.0
+  with:
+    # Domain names separated by commas (can be used multiple times)
+    domains: x.com
+    # Disable DNS resolution of names and dependent features
+    passive: # optional
+    # Execute brute forcing after searches
+    brute: true
+    # Path to the text file containing terminal stdout/stderr
+    output: errorlog.txt
+          
