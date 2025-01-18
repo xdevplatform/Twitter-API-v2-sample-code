@@ -1,0 +1,8 @@
+# Restrict all files related to deploying to
+# require lead maintainer approval.
+
+.github/workflows/              @twitter-service
+.github/CODEOWNERS              @twitter-service
+CODE_OF_CONDUCT.md              @twitter-service
+LICENSE                         @twitter-service
+README.md                       @twitter-service
