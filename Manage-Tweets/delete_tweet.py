@@ -16,7 +16,7 @@ id = "tweet-id-to-delete"
 
 
 # Get request token
-request_token_url = "https://api.twitter.com/oauth/request_token"
+request_token_url = "https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=write"
 oauth = OAuth1Session(consumer_key, client_secret=consumer_secret)
 
 try:
