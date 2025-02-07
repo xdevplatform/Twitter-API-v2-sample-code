@@ -2,7 +2,7 @@ import requests
 import os
 import json
 
-# To set your enviornment variables in your terminal run the following line:
+# To set your environment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
 bearer_token = os.environ.get("BEARER_TOKEN")
 
@@ -49,7 +49,7 @@ def delete_all_rules(rules):
     print(json.dumps(response.json()))
 
 
-def set_rules(delete):
+def set_rules():
     # You can adjust the rules if needed
     sample_rules = [
         {"value": "dog has:images", "tag": "dog pictures"},
@@ -68,7 +68,7 @@ def set_rules(delete):
     print(json.dumps(response.json()))
 
 
-def get_stream(set):
+def get_stream():
     response = requests.get(
         "https://api.twitter.com/2/tweets/search/stream", auth=bearer_oauth, stream=True,
     )
@@ -87,9 +87,9 @@ def get_stream(set):
 
 def main():
     rules = get_rules()
-    delete = delete_all_rules(rules)
-    set = set_rules(delete)
-    get_stream(set)
+    delete_all_rules(rules)
+    set_rules()
+    get_stream()
 
 
 if __name__ == "__main__":
