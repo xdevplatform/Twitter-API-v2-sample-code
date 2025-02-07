@@ -14,11 +14,11 @@ Individual API features have folders where you can find examples of usage in sev
 
 In order to run the samples in this repository you will need to set up some environment variables. You can find your credentials and bearer token in the App inside of your Project in the [dashboard of the developer portal](https://developer.twitter.com/en/portal/projects-and-apps).
 
-For OAuth 1.0a samples, you will need to export your consumer key and secret in your terminal. Be sure to replace `<your_consumer_key>` and `<your_consumer_secret>` with your own credentials without the `< >`.
+For OAuth 1.0a samples, you will need to export your consumer key and secret in your terminal. Be sure to replace `<your_api_key>` and `<your_api_key_secret>` with your own credentials without the `< >`.
 
 ```bash
-export CONSUMER_KEY='<your_consumer_key>'
-export CONSUMER_SECRET='<your_consumer_secret>'
+export API_KEY='<your_api_key>'
+export API_KEY_SECRET='<your_api_key_secret>'
 ```
 
 For samples which use bearer token authentication, you will need to export the bearer token. Be sure to replace  `<your_bearer_token>` with your own bearer token without the `< >`.
