@@ -1,6 +1,6 @@
 import requests
 
-# Replace with your job download_url
+# Replace with your job upload_url
 upload_url = ''
 
 # Replace with your file path that contains the list of Tweet IDs or User IDs, one ID per line
