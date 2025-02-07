@@ -16,5 +16,5 @@ response <-
             httr::add_headers(.headers = headers),
             query = params)
 
-obj <- httr::content(res, as = "text")
+obj <- httr::content(response, as = "text")
 print(obj)
