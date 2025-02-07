@@ -40,8 +40,8 @@ const oauth = OAuth({
 
 async function input(prompt) {
   return new Promise(async (resolve, reject) => {
-    readline.question(prompt, (out) => {
-      readline.close();
+    rl.question(prompt, (out) => {
+      rl.close();
       resolve(out);
     });
   });
